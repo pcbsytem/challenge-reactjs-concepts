@@ -1,14 +1,19 @@
 import React from "react";
 
-import "./styles.css";
+import api from "./services/api";
+import swal from 'sweetalert';
 
+import "./styles.css";
+// https://github.com/Rocketseat/bootcamp-gostack-desafios/tree/master/desafio-conceitos-reactjs
 function App() {
   async function handleAddRepository() {
     // TODO
+    await api.post('repositories')
   }
 
   async function handleRemoveRepository(id) {
-    // TODO
+    await api.delete(`repositories/${id}`)
+      .then(response => swal("Sucesso!", "Repositório removido com sucesso!", "success"));
   }
 
   return (
